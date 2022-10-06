@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+<!--   
+   <context:component-scan base-package="com.lip6.services.*" />
+    <context:annotation-config/> -->
+
+<bean id="cdao" class="com.lip6.daos.DAOContact"/>
+
+<bean id="Contact" class="com.lip6.entities.Contact">
+	<property name="firstName" value="Mohamed"/>
+	<property name="lastName" value="Belhaimeur"/>
+	<property name="email" value="moha@gmail.com"/>
+	<property name="address"><ref bean="Address"/></property>
+	<property name="phones">
+
+	<set>
+		<ref bean="PhoneNumber1"/>
+		<ref bean ="PhoneNumber2"/>
+	</set>
+	</property>
+		<property name="contactGroups">
+
+	<set>
+		<ref bean="ContactGroup"/>
+	
+	</set>
+	</property>
+</bean>
+
+<bean id="PhoneNumber1" class="com.lip6.entities.PhoneNumber">
+	<property name="PhoneKind" value="Oppo"/>
+	<property name="PhoneNumber" value="0768016674"/>
+	
+</bean>
+<bean id="PhoneNumber2" class="com.lip6.entities.PhoneNumber">
+	<property name="PhoneKind" value="Xiaomi"/>
+	<property name="PhoneNumber" value="0668016674"/>
+	
+</bean>
+
+<bean id="Address" class="com.lip6.entities.Address">
+		
+		<property name="Street" value="Vanderbilt"/>
+		<property name="City" value="Poissy"/>
+		<property name="zip" value="78955"/>
+		<property name="Country" value="France"/>
+	
+	
+	
+</bean>
+
+<bean id="ContactGroup" class="com.lip6.entities.ContactGroup">
+<property name="groupName" value="LES BG"/>
+	
+	
+	
+</bean>
+
+<bean id="Contact2" class="com.lip6.entities.Contact">
+
+</bean>
+
+</beans>
